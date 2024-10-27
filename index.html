@@ -4,69 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #e9ecef;
-        }
-        header {
-            background: #007bff;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        div {
-            border-radius: 8px;
-            background-color: #f2f2f2;
-            padding: 30px;
-            max-width: 600px;
-            margin: auto;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-        input[type=text], input[type=tel], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
-        input[type=text]:focus, input[type=tel]:focus, select:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-        input[type=submit] {
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        input[type=submit]:hover {
-            background-color: #45a049;
-        }
-        label {
-            font-weight: bold;
-            display: block;
-            margin: 10px 0 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <header><h1>Welcome to Pragati Library</h1></header>
 <h3>Student Registration</h3>
-
 <div>
-    <form method="post" name="google-sheet">
+    <form method="post" name="google-sheet" id="regform">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your name.." required>
 
@@ -77,7 +21,7 @@
         <input type="text" id="village" name="village" placeholder="Your village.." required>
 
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="Your phone number.." required>
+        <input type="tel" id="phone" name="phone" placeholder="Your phone number.." pattern="[0-9]{10}" required>
 
         <label for="Slot">Slot</label>
         <select id="Slot" name="Slot" required>
@@ -93,24 +37,38 @@
             <option value="1 month">1 Month(Fees-₹400)</option>
             <option value="2 months">2 Months(Fees-₹700)</option>
             <option value="3 months">3 Months(Fees-₹1000)</option>
-            
         </select>
 
-        <input type="submit" value="Submit" name="submit">
+        <input type="submit" value="Submit" name="submit" aria-label="Submit Registration Form">
+        <input type="reset" value="Reset">
     </form>
-</div>
-<img src="sonu.jpg" />
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwtmUr7eAfxmjxy8SagPDnK5FfS2JsNIWZTEBbaCEYpQxtdvpWJ4cgHtZwUNh7SZ5asXg/exec';
-    const form = document.forms['google-sheet'];
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => alert("Thanks for contacting us! We will get back to you soon."))
-            .catch(error => console.error('Error!', error.message));
-    });
+    <div id="paymentSection">
+        <h3>Make Payment</h3>
+        <img src="sonu.jpg" alt="Payment QR Code" id="qrCode">
+        <p style="text-align: center;">Scan the QR code to make the payment.</p>
+    </div>
+
+    <div id="uploadSection">
+        <h3>Upload Payment Screenshot</h3>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="paymentScreenshot" name="paymentScreenshot" accept="image/*" required>
+            <input type="submit" value="Upload Screenshot" id="photoupload">
+        </form>
+    </div>
+
+    <div id="thankyouMessage" class="thankyou-msg">
+        <h2>Thank you!</h2>
+        <p>Your registration and payment have been successfully submitted. We will contact you soon.</p>
+        <button class="close-btn" onclick="closeThankYou()">Close</button>
+    </div>
+</div>
+
+<script src="main.js">
+    
 </script>
+
 
 </body>
 </html>
+
