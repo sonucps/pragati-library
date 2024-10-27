@@ -5,7 +5,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbyF_5j9eu_4Uw6S5P3RGJ
     const uploadSection = document.getElementById('uploadSection');
     const thankyouMessage = document.getElementById('thankyouMessage');
     const regform = document.getElementById('regform');
-    const botToken = '6126270354:AAEWnz1lo1D9OkZook_7I-gr090eVe6F07k'; // Replace with your bot token
+    const botToken = '6126270354:AAEWnz1lo1D9OkZook_7I-gr090eVe6F07k'; // Replace  your bot token
     const chatId = '1506636821'; // Replace with your chat ID
     const url = `https://api.telegram.org/bot${botToken}/sendPhoto`;
 
