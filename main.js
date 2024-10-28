@@ -14,8 +14,9 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbyF_5j9eu_4Uw6S5P3RGJ
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
                 regform.style.display = "none"; // Hide form
-                paymentSection.style.display = "block"; // Show payment section
-                uploadSection.style.display = "block"; // Show screenshot upload section
+               // paymentSection.style.display = "block"; // Show payment section
+               // uploadSection.style.display = "block"; // Show screenshot upload section
+                 thankyouMessage.style.display = "block"; // Show thank you message
             })
             .catch(error => console.error('Error!', error.message));
     });
@@ -37,7 +38,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbyF_5j9eu_4Uw6S5P3RGJ
     }).then(response => {
                 paymentSection.style.display = "none"; // Hide payment section
                 uploadSection.style.display = "none"; // Hide upload section
-                thankyouMessage.style.display = "block"; // Show thank you message
+               
             })
             .catch(error => console.error('Error!', error.message));
     });
