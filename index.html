@@ -22,7 +22,7 @@
 
         <label for="phone">Phone Number</label>
         <input type="tel" id="phone" name="phone" placeholder="Your phone number.." pattern="[0-9]{10}" required>
-
+        <input type="hidden" id="timestamp" name="timestamp">
         <label for="Slot">Slot</label>
         <select id="Slot" name="Slot" required>
             <option value="">Select Slot</option>
@@ -61,6 +61,27 @@
         <button class="close-btn" onclick="closeThankYou()">Close</button>
     </div>
 </div>
+<script>
+    document.getElementById("regform").addEventListener("submit", function(event) {
+        // Capture the current date and time
+        const now = new Date();
+        
+        // Format date and time as "YYYY-MM-DD HH:MM:SS"
+        const formattedTimestamp = now.toISOString().slice(0, 19).replace("T", " ");
+
+        // Assign the timestamp to the hidden input
+        document.getElementById("timestamp").value = formattedTimestamp;
+
+        // For testing, log the timestamp
+        console.log("Timestamp set to:", formattedTimestamp);
+    });
+</script>
+
+
+
+
+
+
 
 <script src="main.js">
     
